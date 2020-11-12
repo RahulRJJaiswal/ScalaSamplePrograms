@@ -1,4 +1,4 @@
-package program
+package com.scala.program
 
 object starPattern {
 
@@ -14,22 +14,24 @@ object starPattern {
 
       println("Do you want to continue(Y/N): ")
       v_continue = utils.userInputString()
-    } while (v_continue == "Y" || v_continue == "y")
+    } while(v_continue == "Y" || v_continue == "y")
 
     println("bye bye... :)")
   }
 
-  def chooseOptions() = {
+  def chooseOptions()={
     println("Please chose from below options: \n" +
       "1. Right Triangle Star Pattern \n" +
       "2. Mirrored Right Triangle Star Pattern \n" +
-      "3. Inverted Right Triangle Star Pattern")
+      "3. Inverted Right Triangle Star Pattern \n" +
+      "4. Inverted Mirror Right Triangle Star Pattern \n"+
+      "5. Pyramid Star Pattern")
     val option = utils.userInputNumber()
 
     print("Enter the number of rows ")
     val num = utils.userInputNumber()
 
-    var opt = (option, num)
+    var opt = (option,num)
     opt
   }
 
@@ -37,39 +39,65 @@ object starPattern {
     case 1 => rightTriangleStarPattern(num)
     case 2 => mirroredRightTriangleStarPattern(num)
     case 3 => invertedRightTriangleStarPattern(num)
+    case 4 => invertedMirrorRightTriangleStarPattern(num)
+    case 5 => pyramidStarPattern(num)
     case _ => "many"
   }
 
-  def invertedRightTriangleStarPattern(n: Int): Unit = {
-    for (i <- n to 1 by -1) {
-      for (j <- 1 to i by 1) {
+  def pyramidStarPattern(n:Int): Unit ={
+    var m = n
+    for (i <- 1 to n by 1){
+        for (j <- 1 to m by 1){
+          print(" ")
+        }
+      for (k <- 1 to 2*i -1){
         print("*")
       }
+      m = m-1
       println("")
     }
   }
-
-  def rightTriangleStarPattern(n: Int): Unit = {
-    println("Pattern: ")
-    for (i <- 1 to n by 1) {
-      for (j <- 1 to i by 1) {
-        print("*")
-      }
-      println("")
-    }
-  }
-
-  def mirroredRightTriangleStarPattern(n: Int): Unit = {
-    var m: Int = 1
-    for (i <- n to 1 by -1) {
-      for (j <- 1 to (i - 1) by 1) {
+  def invertedMirrorRightTriangleStarPattern(n:Int): Unit ={
+    var m = 1
+    for(i <- 1 to n by 1){
+      for (j <- 1 to m by 1){
         print(" ")
       }
-      for (k <- 1 to m by 1) {
+      for(k <- m to n by 1) {
         print("*")
       }
-      m = m + 1
+      println("")
+      m = m+1
+    }
+  }
+  def invertedRightTriangleStarPattern(n: Int): Unit ={
+    for(i <- n to 1 by -1){
+      for(j <- 1 to i by 1){
+        print("*")
+      }
       println("")
     }
+  }
+  def rightTriangleStarPattern(n: Int): Unit ={
+    println("Pattern: ")
+    for (i <- 1 to n by 1){
+      for (j <- 1 to i by 1){
+        print("*")
+      }
+      println("")
+    }
+  }
+  def mirroredRightTriangleStarPattern(n: Int): Unit ={
+    var m: Int = 1
+    for (i <- n to 1 by -1){
+     for (j <- 1 to (i-1) by 1){
+       print(" ")
+     }
+     for (k <- 1 to m by 1){
+       print("*")
+     }
+      m = m+1
+        println("")
+   }
   }
 }
