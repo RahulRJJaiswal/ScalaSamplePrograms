@@ -1,4 +1,4 @@
-package com.scala.program
+package program
 
 object starPattern {
 
@@ -41,7 +41,7 @@ object starPattern {
     case 3 => invertedRightTriangleStarPattern(num)
     case 4 => invertedMirrorRightTriangleStarPattern(num)
     case 5 => pyramidStarPattern(num)
-    case _ => "many"
+    case _ => "NO OPTION FOUND..."
   }
 
   def pyramidStarPattern(n:Int): Unit ={
